@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.container{
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+.score{
+  color: white;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(30,20px);
+  grid-template-rows: repeat(30,20px);
+  gap: 1px;
+  width: max-content;
+}
+
+.cell{
+  background-color: white;
+  width: 20px;
+  height: 20px;
+}
+
+.food{
+  background-color: red;
+}
+
+.snake{
+  background-color: blue;
+}
+
