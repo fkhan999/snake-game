@@ -13,7 +13,7 @@ function App() {
   let y_pos= Math.floor(Math.random()*total_grid_size);
   const [food,setFood]=useState({x:x_pos,y:y_pos});
   const [snake,setSnake]=useState(initialSnakePosition);
-  const [direction,setDirection]=useState("L");
+  const [direction,setDirection]=useState("LEFT");
   const [score,setScore]=useState(0);
 
 
@@ -51,16 +51,16 @@ function App() {
     }
     let newSnake=[...snake];
     switch(direction){
-      case "L":
+      case "LEFT":
         newSnake.unshift({x:newSnake[0].x,y:newSnake[0].y-1})
         break;
-      case "R":
+      case "RIGHT":
         newSnake.unshift({x:newSnake[0].x,y:newSnake[0].y+1})
         break;
-      case "U":
+      case "UP":
         newSnake.unshift({x:newSnake[0].x-1,y:newSnake[0].y})
         break;
-      case "D":
+      case "DOWN":
         newSnake.unshift({x:newSnake[0].x+1,y:newSnake[0].y})
         break;
 
@@ -80,27 +80,27 @@ function App() {
     console.log(direction,key);
     switch(key){
       case "ArrowUp":
-        if (direction!=="D")
+        if (direction!=="DOWN")
         {
-          setDirection("U");
+          setDirection("UP");
         }
         break;
       case "ArrowDown":
-        if (direction!=="U")
+        if (direction!=="UP")
         {
-          setDirection("D");
+          setDirection("DOWN");
         }
         break;
       case "ArrowLeft":
-        if (direction!=="R")
+        if (direction!=="RIGHT")
         {
-          setDirection("L");
+          setDirection("LEFT");
         }
         break;
       case "ArrowRight":
-        if (direction!="L")
+        if (direction!="LEFT")
         {
-          setDirection("R");
+          setDirection("RIGHT");
         }
         break;
     }
@@ -121,7 +121,7 @@ function App() {
 
   useEffect(()=>{
     document.addEventListener("keydown",updateDirection);
-    return ()=>clearInterval("keydown",updateGame);
+    return ()=>document.removeEventListener("keydown",updateGame);
   });
 
   
